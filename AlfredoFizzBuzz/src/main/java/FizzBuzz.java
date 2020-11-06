@@ -18,8 +18,9 @@ public class FizzBuzz {
     private static List<String> processInput(int number) {
         List<String> result = new ArrayList<String>();
         for(int currentNumber=1; currentNumber<=number; currentNumber++){
-            if(isDivisibleWith3(currentNumber) && isDivisibleWith5(currentNumber))
-               result.add("fizzbuzz");
+            if(contains3(currentNumber)) result.add("alfresco");
+            else if(isDivisibleWith3(currentNumber) && isDivisibleWith5(currentNumber))
+                result.add("fizzbuzz");
             else if(isDivisibleWith3(currentNumber)) result.add("fizz");
             else if(isDivisibleWith5(currentNumber)) result.add("buzz");
             else result.add(Integer.toString(currentNumber));
@@ -31,6 +32,10 @@ public class FizzBuzz {
         for(String nbr : result)
             System.out.print(nbr + " ");
         System.out.println();
+    }
+
+    private static boolean contains3(int number){
+        return Integer.toString(number).contains("3");
     }
 
     private static boolean isDivisibleWith3(int number) {
