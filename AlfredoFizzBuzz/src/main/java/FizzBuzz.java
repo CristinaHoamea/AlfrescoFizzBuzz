@@ -7,6 +7,8 @@ public class FizzBuzz {
         System.out.println("Number: "+number);
         List<String> result = processInput(number);
         displayResult(result);
+        List<String> output = createReport(result);
+        displayResult(output);
     }
 
     private static int readInput() {
@@ -32,6 +34,25 @@ public class FizzBuzz {
         for(String nbr : result)
             System.out.print(nbr + " ");
         System.out.println();
+    }
+
+    private static ArrayList<String> createReport(List<String> result) {
+        List<String> output = new ArrayList<String>();
+        int fizzNbr = Collections.frequency(result, "fizz");
+        int buzzNbr = Collections.frequency(result, "buzz");
+        int fizzbuzzNbr = Collections.frequency(result, "fizzbuzz");
+        int alfrescoNbr = Collections.frequency(result, "alfresco");
+        int intNbr = result.size() - (fizzNbr + buzzNbr + fizzbuzzNbr + alfrescoNbr);
+
+        return new ArrayList<String>() {
+            {
+                add("fizz: "+fizzNbr);
+                add("buzz: "+buzzNbr);
+                add("fizzBuzz: "+fizzbuzzNbr);
+                add("alfrescoNbr: "+alfrescoNbr);
+                add("integer: "+intNbr);
+            }
+        };
     }
 
     private static boolean contains3(int number){
